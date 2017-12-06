@@ -2,8 +2,6 @@ package dev.meetup.mooresville.meetupmovies;
 
 import android.os.AsyncTask;
 
-import org.json.JSONException;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,12 +30,8 @@ public class DownloadMovieTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        try {
-            mDownloadCompleteListener.downloadComplete(MovieAPIMapper.retrieveMoviesFromResponse(result));
-        }
-        catch (JSONException e) {
-            e.printStackTrace();
-        }
+        MovieResponse movieResponse = MovieResponse.parseJSON(result);
+        mDownloadCompleteListener.downloadComplete(movieResponse.getMovies());
     }
 
     private String downloadData(String urlString) throws IOException {

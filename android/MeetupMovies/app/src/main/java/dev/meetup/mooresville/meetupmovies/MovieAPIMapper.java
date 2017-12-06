@@ -6,6 +6,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class MovieAPIMapper {
 
@@ -22,22 +23,28 @@ public class MovieAPIMapper {
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
             if (null != jsonObject) {
-                Movie movie = new Movie();
+                String title = null;
+                Double voteAverage = null;
+                Date releaseDate = null;
+                String overview = null;
+                String posterURLString = null;
+
                 if (jsonObject.has("title")) {
-                    movie.setTitle(jsonObject.getString("title"));
+                    title = jsonObject.getString("title");
                 }
                 if (jsonObject.has("vote_average")) {
-                    movie.setVoteAverage(jsonObject.getDouble("vote_average"));
+                    voteAverage = jsonObject.getDouble("vote_average");
                 }
-                if (jsonObject.has("release_date")) {
-                    movie.setReleaseDate(jsonObject.getString("release_date"));
-                }
+//                if (jsonObject.has("release_date")) {
+//                    releaseDate = jsonObject.getString("release_date");
+//                }
                 if (jsonObject.has("overview")) {
-                    movie.setOverview(jsonObject.getString("overview"));
+                    overview = jsonObject.getString("overview");
                 }
                 if (jsonObject.has("poster_path")) {
-                    movie.setPosterURLString(jsonObject.getString("poster_path"));
+                    posterURLString = jsonObject.getString("poster_path");
                 }
+                Movie movie = new Movie(title, voteAverage, overview, posterURLString, releaseDate);
                 movies.add(movie);
             }
         }

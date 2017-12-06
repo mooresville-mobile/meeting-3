@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
 
@@ -13,7 +14,7 @@ import java.util.Locale;
 class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieHolder> {
 
     private List<Movie> mMovies;
-
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM d, yyyy");
     MovieAdapter(List<Movie> movies) {
         mMovies = movies;
     }
@@ -32,7 +33,7 @@ class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieHolder> {
         final Movie movie = mMovies.get(position);
         holder.mTitleTextView.setText(movie.getTitle());
         holder.mVoteAverageTextView.setText(getRating(movie));
-        holder.mReleaseDateTextView.setText(movie.getReleaseDate());
+        holder.mReleaseDateTextView.setText(dateFormat.format(movie.getReleaseDate()));
         holder.mOverviewTextView.setText(movie.getOverview());
     }
 

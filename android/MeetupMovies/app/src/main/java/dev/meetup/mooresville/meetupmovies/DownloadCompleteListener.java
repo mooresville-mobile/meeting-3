@@ -1,8 +1,8 @@
 package dev.meetup.mooresville.meetupmovies;
 
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface DownloadCompleteListener {
-    void downloadComplete(ArrayList<Movie> movies);
+    void downloadComplete(List<Movie> movies);
 }

@@ -1,102 +1,49 @@
 package dev.meetup.mooresville.meetupmovies;
 
 
-import android.os.Parcel;
-import android.os.Parcelable;
+import com.google.gson.annotations.SerializedName;
 
-public class Movie implements Parcelable {
+import java.util.Date;
 
-    private String mTitle;
-    private Double mVoteAverage;
-    private String mOverview;
-    private String mPosterURLString;
-    private String mReleaseDate;
+class Movie {
 
-    public Movie() {
-    }
+    private String title;
+    private Double voteAverage;
+    private String overview;
+    private Date releaseDate;
 
-    public Movie(String title,
+    @SerializedName("poster_path")
+    private String posterURLString;
+
+    Movie(String title,
             Double voteAverage,
             String overview,
             String posterURLString,
-            String releaseDate) {
-        mTitle = title;
-        mVoteAverage = voteAverage;
-        mOverview = overview;
-        mPosterURLString = posterURLString;
-        mReleaseDate = releaseDate;
+            Date releaseDate) {
+        this.title = title;
+        this.voteAverage = voteAverage;
+        this.overview = overview;
+        this.posterURLString = posterURLString;
+        this.releaseDate = releaseDate;
     }
 
-    protected Movie(Parcel in) {
-        mTitle = in.readString();
-        mOverview = in.readString();
-        mPosterURLString = in.readString();
-        mReleaseDate = in.readString();
+    String getTitle() {
+        return title;
     }
 
-    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
-        @Override
-        public Movie createFromParcel(Parcel in) {
-            return new Movie(in);
-        }
-
-        @Override
-        public Movie[] newArray(int size) {
-            return new Movie[size];
-        }
-    };
-
-    public String getTitle() {
-        return mTitle;
+    Double getVoteAverage() {
+        return voteAverage;
     }
 
-    public void setTitle(String title) {
-        mTitle = title;
+    String getOverview() {
+        return overview;
     }
 
-    public Double getVoteAverage() {
-        return mVoteAverage;
+    String getPosterURLString() {
+        return posterURLString;
     }
 
-    public void setVoteAverage(Double voteAverage) {
-        mVoteAverage = voteAverage;
-    }
-
-    public String getOverview() {
-        return mOverview;
-    }
-
-    public void setOverview(String overview) {
-        mOverview = overview;
-    }
-
-    public String getPosterURLString() {
-        return mPosterURLString;
-    }
-
-    public void setPosterURLString(String posterURLString) {
-        mPosterURLString = posterURLString;
-    }
-
-    public String getReleaseDate() {
-        return mReleaseDate;
-    }
-
-    public void setReleaseDate(String releaseDate) {
-        mReleaseDate = releaseDate;
-    }
-
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(mTitle);
-        parcel.writeString(mOverview);
-        parcel.writeString(mPosterURLString);
-        parcel.writeString(mReleaseDate);
+    Date getReleaseDate() {
+        return releaseDate;
     }
 }
