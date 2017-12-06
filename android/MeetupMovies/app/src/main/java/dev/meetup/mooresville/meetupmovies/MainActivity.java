@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         Retrofit retrofit = getRetrofit();
 
         MovieApiService movieApiService = retrofit.create(MovieApiService.class);
-        
+
         Call<MovieResponse> call = movieApiService.getMovies(
                 API_KEY,
                 Locale.getDefault().toString(),
