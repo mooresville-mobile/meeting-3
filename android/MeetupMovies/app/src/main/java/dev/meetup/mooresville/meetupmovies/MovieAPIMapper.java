@@ -25,7 +25,7 @@ public class MovieAPIMapper {
             if (null != jsonObject) {
                 String title = null;
                 Double voteAverage = null;
-                Date releaseDate = null;
+                String releaseDate = null;
                 String overview = null;
                 String posterURLString = null;
 
@@ -35,9 +35,9 @@ public class MovieAPIMapper {
                 if (jsonObject.has("vote_average")) {
                     voteAverage = jsonObject.getDouble("vote_average");
                 }
-//                if (jsonObject.has("release_date")) {
-//                    releaseDate = jsonObject.getString("release_date");
-//                }
+                if (jsonObject.has("release_date")) {
+                    releaseDate = jsonObject.getString("release_date");
+                }
                 if (jsonObject.has("overview")) {
                     overview = jsonObject.getString("overview");
                 }

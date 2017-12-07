@@ -33,7 +33,7 @@ class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieHolder> {
         final Movie movie = mMovies.get(position);
         holder.mTitleTextView.setText(movie.getTitle());
         holder.mVoteAverageTextView.setText(getRating(movie));
-        holder.mReleaseDateTextView.setText(dateFormat.format(movie.getReleaseDate()));
+        holder.mReleaseDateTextView.setText(movie.getReleaseDate());
         holder.mOverviewTextView.setText(movie.getOverview());
     }
 

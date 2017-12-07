@@ -3,14 +3,12 @@ package dev.meetup.mooresville.meetupmovies;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.Date;
-
 class Movie {
 
     private String title;
     private Double voteAverage;
     private String overview;
-    private Date releaseDate;
+    private String releaseDate;
 
     @SerializedName("poster_path")
     private String posterURLString;
@@ -19,7 +17,7 @@ class Movie {
             Double voteAverage,
             String overview,
             String posterURLString,
-            Date releaseDate) {
+            String releaseDate) {
         this.title = title;
         this.voteAverage = voteAverage;
         this.overview = overview;
@@ -43,7 +41,7 @@ class Movie {
         return posterURLString;
     }
 
-    Date getReleaseDate() {
+    String getReleaseDate() {
         return releaseDate;
     }
 }

@@ -103,6 +103,9 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<MovieResponse> call, Throwable t) {
+                if (mProgressDialog != null) {
+                    mProgressDialog.dismiss();
+                }
                 showDownloadError(t);
             }
         });
@@ -135,8 +138,7 @@ public class MainActivity extends AppCompatActivity {
     private void showDownloadError(Throwable throwable) {
         new AlertDialog.Builder(this)
                 .setTitle("Download Error")
-                .setMessage("We had a problem getting your list of movies. Info: " +
-                        throwable.getLocalizedMessage())
+                .setMessage("We had a problem getting your list of movies.")
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                     }
